@@ -1,0 +1,28 @@
+//created on: Apr 18, 2017
+package droolscours
+
+//list any import classes here.
+
+import droolscours.Account;
+import util.OutputHistory;
+
+//declare any global variables here
+global OutputHistory showResult;
+
+rule "Your First Rule"
+
+    when
+        Account( )
+    then
+        showResult.showText("This Account exits");
+
+end
+
+rule "Your Second Rule"
+    //include attributes such as "salience" here...
+    when
+        //conditions
+    then
+        //actions
+
+end

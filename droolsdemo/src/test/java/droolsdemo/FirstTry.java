@@ -26,7 +26,7 @@ public class FirstTry {
 	
 	@Test
 	public void testFirstOne() {
-		sessionStatefull = KnowledgeSessionHelper.getStateFullKnowledgeSession(kieContainer, "ksession-rules");
+		sessionStatefull = KnowledgeSessionHelper.getStateFullKnowledgeSession(kieContainer, "ksession-rules-lesson1");
 		sessionStatefull.fireAllRules();
 	}
 
