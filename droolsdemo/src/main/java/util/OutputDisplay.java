@@ -1,6 +1,6 @@
 package util;
 
-public class OutputHistory{
+public class OutputDisplay{
 	
 	public void showText(String Text){
 		

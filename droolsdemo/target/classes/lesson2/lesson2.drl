@@ -1,0 +1,24 @@
+//created on: Apr 29, 2017
+package droolscours
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+import droolscours.Account;
+import droolscours.AccountingPeriod;
+import droolscours.CashFlow;
+import util.OutputDisplay;
+
+global OutputDisplay showResult;
+
+
+rule "Your First Rule revisted agian"
+
+    when
+        Account( )
+    then
+        showResult.showText("The account exists");
+end

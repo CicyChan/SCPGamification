@@ -4,12 +4,14 @@ package droolscours
 //list any import classes here.
 
 import droolscours.Account;
-import util.OutputHistory;
+import droolscours.AccountingPeriod;
+import droolscours.CashFlow;
+import util.OutputDisplay;
 
 //declare any global variables here
-global OutputHistory showResult;
+global OutputDisplay showResult;
 
-rule "Your First Rule"
+rule "Account Exists"
 
     when
         Account( )
@@ -18,11 +20,22 @@ rule "Your First Rule"
 
 end
 
-rule "Your Second Rule"
+rule "Rule of Accounting Periond that are inserting"
     //include attributes such as "salience" here...
     when
-        //conditions
+    	AccountingPeriod( )
+        
     then
-        //actions
+        showResult.showText("This AccountingPeriod exits");
+end
 
+rule "Rule of CashFlow that are inserting"
+    //include attributes such as "salience" here...
+    when
+    	CashFlow( )
+        
+    then
+        showResult.showText("This CashFlow exits");
+        AccountingPeriod newPeriod = new AccountingPeriod();
+        insert (newPeriod);
 end
