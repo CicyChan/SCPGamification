@@ -55,7 +55,7 @@ public class TestLesson2 {
 	}
 
 	@Test
-	public void testTwoFact() {
+	public void testTwoFact() throws Exception {
 		sessionStatefull = KnowledgeSessionHelper.getStateFulKnowledgeSessionWithCallBack(kieContainer,
 				"ksession-rules-lesson2");
 
@@ -71,9 +71,15 @@ public class TestLesson2 {
 		CashFlow cash1 = new CashFlow();
 		cash1.setAccountNo(1);
 		cash1.setAmount(1000);
+		cash1.setMvDate(DateHelper.getDate("2016-01-15"));
 		cash1.setType(CashFlow.CREDIT);
-
 		sessionStatefull.insert(cash1);
+
+		AccountingPeriod period = new AccountingPeriod();
+		period.setStartDate(DateHelper.getDate("2016-01-01"));
+		period.setEndDate(DateHelper.getDate("2016-03-31"));
+		sessionStatefull.insert(period);
+
 		sessionStatefull.fireAllRules();
 		Assert.assertEquals(testAccount.getBalance(), 1000.0, 0);
 
@@ -96,19 +102,71 @@ public class TestLesson2 {
 		CashFlow cash1 = new CashFlow();
 		cash1.setAccountNo(1);
 		cash1.setAmount(1000);
-		cash1.setMvDate(DateHelper.getDate("2010-01-15"));
+		cash1.setMvDate(DateHelper.getDate("2016-01-15"));
 		cash1.setType(CashFlow.CREDIT);
 		sessionStatefull.insert(cash1);
 
 		CashFlow cash2 = new CashFlow();
 		cash2.setAccountNo(2);
 		cash2.setAmount(1000);
-		cash2.setMvDate(DateHelper.getDate("2010-01-15"));
+		cash2.setMvDate(DateHelper.getDate("2016-02-15"));
 		cash2.setType(CashFlow.CREDIT);
 		sessionStatefull.insert(cash2);
 
+		AccountingPeriod period = new AccountingPeriod();
+		period.setStartDate(DateHelper.getDate("2016-01-01"));
+		period.setEndDate(DateHelper.getDate("2016-03-31"));
+		sessionStatefull.insert(period);
+
 		sessionStatefull.fireAllRules();
 		Assert.assertEquals(testAccount.getBalance(), 1000.0, 0);
+
+	}
+
+	@Test
+	public void testCalculateBalance() throws Exception {
+		sessionStatefull = KnowledgeSessionHelper.getStateFulKnowledgeSessionWithCallBack(kieContainer,
+				"ksession-rules-lesson2");
+
+		OutputDisplay outputDisply = new OutputDisplay();
+		sessionStatefull.setGlobal("showResult", outputDisply);
+
+		Account testAccount = new Account();
+		testAccount.setAccountno(1);
+		testAccount.setBalance(0);
+
+		sessionStatefull.insert(testAccount);
+
+		CashFlow cash1 = new CashFlow();
+		cash1.setAccountNo(1);
+		cash1.setAmount(1000);
+		cash1.setMvDate(DateHelper.getDate("2016-01-15"));
+		cash1.setType(CashFlow.CREDIT);
+		sessionStatefull.insert(cash1);
+
+		CashFlow cash2 = new CashFlow();
+		cash2.setAccountNo(1);
+		cash2.setAmount(500);
+		cash2.setMvDate(DateHelper.getDate("2016-02-15"));
+		cash2.setType(CashFlow.DEBIT);
+		sessionStatefull.insert(cash2);
+
+		CashFlow cash3 = new CashFlow();
+		cash3.setAccountNo(1);
+		cash3.setAmount(1000);
+		cash3.setMvDate(DateHelper.getDate("2016-04-15"));
+		cash3.setType(CashFlow.CREDIT);
+		sessionStatefull.insert(cash3);
+
+		AccountingPeriod period = new AccountingPeriod();
+		period.setStartDate(DateHelper.getDate("2016-01-01"));
+		period.setEndDate(DateHelper.getDate("2016-03-31"));
+		sessionStatefull.insert(period);
+
+		sessionStatefull.fireAllRules();
+		Assert.assertEquals(testAccount.getBalance(), 500.0, 0);
+
+		// Assert.assertTrue(testAccount.getBalance() == 500);
 
 	}
 

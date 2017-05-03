@@ -23,11 +23,22 @@ rule "Your First Rule revisted agian"
         showResult.showText("The account exists");
 end
 
-rule "Credit rule"
+rule "Credit rule2"
 	when
-         $cash :CashFlow( $accno : accountNo , type == CashFlow.CREDIT )
-         $acc : Account( accountno ==$accno )
+         $cash :CashFlow( $aDate : mvDate , $no : accountNo,  type == CashFlow.CREDIT )
+         $acc : Account( accountno == $no )
+         $period : AccountingPeriod( startDate <= $aDate && endDate >= $aDate )
 	then
 	   $acc.setBalance($acc.getBalance() + $cash.getAmount());
 	   showResult.showText("Account no " + $acc.getAccountno() + " has now a balance of " + $acc.getBalance() );
+end
+
+rule "Debit Rule"
+	when
+		$cash : CashFlow( $aDate : mvDate, $no : accountNo, type == CashFlow.DEBIT )
+		$acc : Account( accountno ==$no )
+		$period : AccountingPeriod( startDate <= $aDate && endDate >= $aDate )
+	then
+	    $acc.setBalance($acc.getBalance() - $cash.getAmount());
+	    showResult.showText("Accont no " + $acc.getAccountno() + "has now a banlance of " + $acc.getBalance());
 end
