@@ -22,3 +22,12 @@ rule "Your First Rule revisted agian"
     then
         showResult.showText("The account exists");
 end
+
+rule "Credit rule"
+	when
+         $cash :CashFlow( $accno : accountNo , type == CashFlow.CREDIT )
+         $acc : Account( accountno ==$accno )
+	then
+	   $acc.setBalance($acc.getBalance() + $cash.getAmount());
+	   showResult.showText("Account no " + $acc.getAccountno() + " has now a balance of " + $acc.getBalance() );
+end
