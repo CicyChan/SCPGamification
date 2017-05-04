@@ -1,0 +1,52 @@
+//created on: May 3, 2017
+package lesson3
+
+//list any import classes here.
+import droolscours.CashFlow;
+import droolscours.PrivateAccount;
+import droolscours.Customer;
+import droolscours.Account;
+import util.OutputDisplay;
+
+//declare any global variables here
+global OutputDisplay showResult;
+
+
+rule "Constraint"
+
+    when
+         $cash : CashFlow( type in ( CashFlow.CREDIT, CashFlow.DEBIT) )
+    then
+        showResult.showText("The CashFlow can be a credit or a debit");
+end
+
+rule "Accessor"
+	when
+		$pAcc : PrivateAccount( owner.name  == "Nico" ) 
+	then
+		showResult.showText("Account is Owned by " + $pAcc.getOwner().getSurname() );
+		
+end
+
+rule "InFixAnd"
+	when
+		( $c1 : Customer ( country == "GB" )) and PrivateAccount ( owner == $c1 )
+		or 
+		( $c1 : Customer ( country == "US" )) and PrivateAccount ( owner == $c1 )
+	then
+		showResult.showText("Person Lives in GB or US");
+end
+
+rule "Not"
+	when
+		not Customer( )
+	then
+		showResult.showText("no Customer");
+end
+
+rule "Exist"
+	when
+		exists Account( )
+	then
+		showResult.showText("Account exist");
+end

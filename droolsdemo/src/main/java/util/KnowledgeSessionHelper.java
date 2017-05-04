@@ -67,22 +67,22 @@ public class KnowledgeSessionHelper {
 		kSession.addEventListener(new AgendaEventListener() {
 
 			public void matchCreated(MatchCreatedEvent event) {
-				System.out.println("The Rule" + event.getMatch().getRule().getName() + " can be fired in agenda");
+				System.out.println("The Rule " + event.getMatch().getRule().getName() + " can be fired in agenda");
 
 			}
 
 			public void matchCancelled(MatchCancelledEvent event) {
-				System.out.println("The Rule" + event.getMatch().getRule().getName() + " cannot be in agenda");
+				System.out.println("The Rule " + event.getMatch().getRule().getName() + " cannot be in agenda");
 
 			}
 
 			public void beforeMatchFired(BeforeMatchFiredEvent event) {
-				System.out.println("The Rule" + event.getMatch().getRule().getName() + " will be fired");
+				System.out.println("The Rule " + event.getMatch().getRule().getName() + " will be fired");
 
 			}
 
 			public void afterMatchFired(AfterMatchFiredEvent event) {
-				System.out.println("The Rule" + event.getMatch().getRule().getName() + " has be fired");
+				System.out.println("The Rule " + event.getMatch().getRule().getName() + " has be fired");
 			}
 
 			public void agendaGroupPopped(AgendaGroupPoppedEvent event) {

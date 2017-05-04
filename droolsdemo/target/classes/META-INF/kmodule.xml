@@ -12,4 +12,8 @@
         <ksession name="ksession-rules-lesson2"/>
     </kbase> 
     
+   <kbase name="rules3" packages="lesson3">
+      <ksession name="ksession-rules-lesson3"/>
+   </kbase> 
+    
 </kmodule>
