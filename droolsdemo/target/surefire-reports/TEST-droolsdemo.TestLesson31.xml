@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="droolsdemo.TestLesson2" time="0.254" errors="0" skipped="0">
+<testsuite tests="3" failures="0" name="droolsdemo.TestLesson31" time="0.633" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_71\jre\bin"/>
@@ -61,8 +61,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="droolsdemo.TestLesson2" name="testdeuxFait1" time="0.209"/>
-  <testcase classname="droolsdemo.TestLesson2" name="testTwoFact" time="0.029"/>
-  <testcase classname="droolsdemo.TestLesson2" name="testCalculateBalance" time="0.011"/>
-  <testcase classname="droolsdemo.TestLesson2" name="testTwoFactTwoCashFlowMovement" time="0.005"/>
+  <testcase classname="droolsdemo.TestLesson31" name="testFromLHS" time="0.569"/>
+  <testcase classname="droolsdemo.TestLesson31" name="testAccumulate" time="0.05"/>
+  <testcase classname="droolsdemo.TestLesson31" name="testCollectionLHS" time="0.014"/>
 </testsuite>

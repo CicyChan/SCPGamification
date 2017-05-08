@@ -1,9 +1,12 @@
+droolscours\CustomerService.class
+droolscours\PrivateAccount.class
 com\sample\DroolsTest$Message.class
 util\DateHelper.class
 util\OutputDisplay.class
 util\KnowledgeSessionHelper$1.class
 com\sample\DroolsTest.class
 droolscours\CashFlow.class
+droolscours\Customer.class
 droolscours\Account.class
 util\KnowledgeSessionHelper$2.class
 util\KnowledgeSessionHelper.class

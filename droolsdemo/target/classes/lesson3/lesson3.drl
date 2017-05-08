@@ -50,3 +50,11 @@ rule "Exist"
 	then
 		showResult.showText("Account exist");
 end
+
+rule "ForAll"
+	when
+		forall ( Account ( $no : accountno )
+				 CashFlow ( accountNo == $no) )
+	then
+		showResult.showText("All Cashflows are related to an Account");
+end

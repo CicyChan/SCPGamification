@@ -13,6 +13,18 @@ public class CashFlow {
 	private int type;
 	private long accountNo;
 
+	public CashFlow() {
+		super();
+	}
+
+	public CashFlow(Date mvDate, double amount, int type, long accountNo) {
+		super();
+		this.mvDate = mvDate;
+		this.amount = amount;
+		this.type = type;
+		this.accountNo = accountNo;
+	}
+
 	public Date getMvDate() {
 		return mvDate;
 	}

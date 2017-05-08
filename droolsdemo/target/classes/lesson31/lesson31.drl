@@ -1,0 +1,70 @@
+//created on: May 5, 2017
+package lesson31
+
+import droolscours.Customer;
+import droolscours.CustomerService;
+import droolscours.Account;
+import droolscours.AccountingPeriod;
+import droolscours.CashFlow;
+import util.OutputDisplay;
+import java.util.ArrayList;
+
+global OutputDisplay showResult;
+global CustomerService customerService;
+
+rule "FromCondtion"
+
+    when
+        $cust : Customer( )
+        $custc : Customer( name == $cust.name, surname == $cust.surname , country != $cust.country ) from  customerService.getListCustomer()
+    then
+       showResult.showText("Found same customer in  country " + $custc.getCountry());
+end
+
+rule "More then 2 CashFlow Line"
+    when
+        $account : Account( $acc : accountno )
+        $accountPeriod : AccountingPeriod ($sDate : startDate ,$eDate : endDate )
+        $number : ArrayList(size >= 2 )
+              from collect( CashFlow( mvDate >= $sDate && mvDate  <= $eDate,accountNo == $acc ) )
+
+    then
+        showResult.showText("Found more than 2 CashFlow Lines");
+        showResult.showText("<<<<<<<<<<");
+        for (Object ff : $number){
+            showResult.showText(ff.toString());
+        }
+        showResult.showText(">>>>>>>>>>>>>>>>");
+end
+
+rule "Numbers of  CashFlow Line"
+    when
+        $account : Account( $acc : accountno )
+        $accountPeriod : AccountingPeriod ($sDate : startDate ,$eDate : endDate )
+        $number : ArrayList( )
+              from collect( CashFlow( mvDate >= $sDate && mvDate  <= $eDate,accountNo == $acc ) )
+
+    then
+        showResult.showText("Found "+$number+" more than 2 CashFlow Lines");
+end
+
+rule "Credit and Debit Rule"
+	when 
+		$account :Account($acc : accountno)
+		$accountPeriod : AccountingPeriod( $sDate : startDate, $eDate : endDate)
+		$totalCredit  : Number( doubleValue > 100)
+			from accumulate (CashFlow( type ==CashFlow.CREDIT,$value : amount, mvDate >= $sDate && mvDate  <= $eDate, accountNo == $acc ),
+                              init( double total = 0; ),
+                              action( total += $value; ),
+                              reverse( total -= $value; ),
+                              result( total ))
+        $totalDebit  : Number( doubleValue > 100)
+			from accumulate (CashFlow( type ==CashFlow.DEBIT,$value : amount, mvDate >= $sDate && mvDate  <= $eDate, accountNo == $acc ),
+                              init( double total = 0; ),
+                              action( total += $value; ),
+                              reverse( total -= $value; ),
+                              result( total ))
+	then 
+	  	showResult.showText(" Found "+$totalCredit+" as a credit");
+        showResult.showText(" Found "+$totalDebit+" as a debit");
+end

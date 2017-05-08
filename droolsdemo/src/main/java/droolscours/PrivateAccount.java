@@ -3,6 +3,15 @@ package droolscours;
 public class PrivateAccount extends Account {
 	private Customer owner;
 
+	public PrivateAccount() {
+		super();
+	}
+
+	public PrivateAccount(Customer owner) {
+		super();
+		this.owner = owner;
+	}
+
 	public Customer getOwner() {
 		return owner;
 	}

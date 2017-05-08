@@ -115,4 +115,38 @@ public class TestLesson3 {
 
 		sessionStatefull.fireAllRules();
 	}
+
+	@Test
+	public void testForAll() throws Exception {
+		sessionStatefull = KnowledgeSessionHelper.getStateFulKnowledgeSessionWithCallBack(kieContainer,
+				"ksession-rules-lesson3");
+
+		OutputDisplay display = new OutputDisplay();
+		sessionStatefull.setGlobal("showResult", display);
+
+		Account testAccount = new Account();
+		testAccount.setAccountno(1);
+		testAccount.setBalance(0);
+		sessionStatefull.insert(testAccount);
+
+		CashFlow cash1 = new CashFlow();
+		cash1.setAccountNo(1);
+		sessionStatefull.insert(cash1);
+
+		CashFlow cash2 = new CashFlow();
+		cash2.setAccountNo(1);
+		sessionStatefull.insert(cash2);
+
+		Account testAccount2 = new Account();
+		testAccount2.setAccountno(2);
+		testAccount2.setBalance(0);
+		sessionStatefull.insert(testAccount2);
+
+		CashFlow cash3 = new CashFlow();
+		cash3.setAccountNo(2);
+		sessionStatefull.insert(cash3);
+
+		sessionStatefull.fireAllRules();
+
+	}
 }
