@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="droolsdemo.TestLesson3" time="0.187" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="droolsdemo.TestLesson3" time="0.219" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_71\jre\bin"/>
@@ -27,9 +27,9 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 10"/>
-    <property name="classworlds.conf" value="C:\Users\i007102\workspace_test\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf7020501947789572449.tmp"/>
+    <property name="classworlds.conf" value="C:\Users\i007102\workspace_test\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf2876796726057193822.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_71\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jdk1.8.0_71/bin/../jre/bin/server;C:/Program Files/Java/jdk1.8.0_71/bin/../jre/bin;C:/Program Files/Java/jdk1.8.0_71/bin/../jre/lib/amd64;c:\windows\system32;c:\windows;c:\windows\system32\wbem;c:\windows\system32\windowspowershell\v1.0\;c:\program files\git\cmd;c:\program files (x86)\microsoft sql server\100\tools\binn\;c:\program files\microsoft sql server\100\tools\binn\;c:\program files\microsoft sql server\100\dts\binn\;c:\program files (x86)\perforce;c:\program files\sap\hdbclient;C:\Python27;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Cloud Foundry;C:\Program Files\Java\jdk1.8.0_71\bin;C:\Program Files\nodejs\;C:\Users\i007102\git\oberon.html;C:\Users\i007102\AppData\Local\atom\bin;C:\work\99_Worksapce\apache-maven-3.3.9\bin;C:\Users\i007102\AppData\Roaming\npm;C:\work\99_Worksapce\eclipse;;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_71\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre1.8.0_131/bin/server;C:/Program Files/Java/jre1.8.0_131/bin;C:/Program Files/Java/jre1.8.0_131/lib/amd64;C:\ProgramData\Oracle\Java\javapath;c:\windows\system32;c:\windows;c:\windows\system32\wbem;c:\windows\system32\windowspowershell\v1.0\;c:\program files\git\cmd;c:\program files (x86)\microsoft sql server\100\tools\binn\;c:\program files\microsoft sql server\100\tools\binn\;c:\program files\microsoft sql server\100\dts\binn\;c:\program files (x86)\perforce;c:\program files\sap\hdbclient;C:\Python27;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Cloud Foundry;C:\Program Files\Java\jdk1.8.0_71\bin;C:\Program Files\nodejs\;C:\Users\i007102\git\oberon.html;C:\Users\i007102\AppData\Local\atom\bin;C:\work\99_Worksapce\apache-maven-3.3.9\bin;C:\Users\i007102\AppData\Roaming\npm;C:\work\99_Worksapce\eclipse;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -61,10 +61,10 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="droolsdemo.TestLesson3" name="testNestedAccessor" time="0.16"/>
-  <testcase classname="droolsdemo.TestLesson3" name="testExisteCondition" time="0.007"/>
-  <testcase classname="droolsdemo.TestLesson3" name="testInOrFact" time="0.005"/>
-  <testcase classname="droolsdemo.TestLesson3" name="testNotCondition" time="0.009"/>
-  <testcase classname="droolsdemo.TestLesson3" name="testInConstrait" time="0.002"/>
-  <testcase classname="droolsdemo.TestLesson3" name="testForAll" time="0.004"/>
+  <testcase classname="droolsdemo.TestLesson3" name="testNestedAccessor" time="0.177"/>
+  <testcase classname="droolsdemo.TestLesson3" name="testExisteCondition" time="0.006"/>
+  <testcase classname="droolsdemo.TestLesson3" name="testInOrFact" time="0.01"/>
+  <testcase classname="droolsdemo.TestLesson3" name="testNotCondition" time="0.011"/>
+  <testcase classname="droolsdemo.TestLesson3" name="testInConstrait" time="0.013"/>
+  <testcase classname="droolsdemo.TestLesson3" name="testForAll" time="0.002"/>
 </testsuite>
