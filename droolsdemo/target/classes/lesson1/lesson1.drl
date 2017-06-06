@@ -7,9 +7,10 @@ import droolscours.Account;
 import droolscours.AccountingPeriod;
 import droolscours.CashFlow;
 import util.OutputDisplay;
-
+import java.math.BigDecimal;
 //declare any global variables here
 global OutputDisplay showResult;
+global java.util.List list;
 
 rule "Account Exists"
 

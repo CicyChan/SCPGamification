@@ -7,9 +7,11 @@ import droolscours.Account;
 import droolscours.AccountingPeriod;
 import droolscours.CashFlow;
 import util.OutputDisplay;
-
+import java.math.BigDecimal;
+import java.util.List;
 //declare any global variables here
 global OutputDisplay showResult;
+global List list;
 
 rule "Account Exists"
 
@@ -38,4 +40,13 @@ rule "Rule of CashFlow that are inserting"
         showResult.showText("This CashFlow exits");
         AccountingPeriod newPeriod = new AccountingPeriod();
         insert (newPeriod);
+end
+
+rule "rule1"
+	dialect "java"
+	when
+		$bd : BigDecimal( )
+		eval ( $bd.compareTo( BigDecimal.ZERO ) > 0 )
+	then
+		list.add( $bd );
 end

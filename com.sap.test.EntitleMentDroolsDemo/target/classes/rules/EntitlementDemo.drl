@@ -1,0 +1,21 @@
+//created on: Jun 2, 2017
+package rules
+
+import ems.object.Customer;
+import ems.object.Entitlement
+import ems.interfaces.IEntitlmentBase;
+import java.util.List;
+
+global IEntitlmentBase entitlementQuery;
+ 
+rule "EntitlementDemo"
+	when 
+		$cust : Customer( )
+		$ent : Entitlement( )
+		eval(entitlementQuery.isEntitlementExist($ent) == true)
+	then
+		entitlementQuery.updateEntitlement($ent);
+end
+
+
+

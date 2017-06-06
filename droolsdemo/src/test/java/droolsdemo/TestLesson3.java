@@ -4,9 +4,15 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.kie.api.io.ResourceType;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.StatelessKieSession;
+import org.kie.internal.KnowledgeBase;
+import org.kie.internal.KnowledgeBaseFactory;
+import org.kie.internal.builder.KnowledgeBuilder;
+import org.kie.internal.builder.KnowledgeBuilderFactory;
+import org.kie.internal.io.ResourceFactory;
 
 import droolscours.Account;
 import droolscours.CashFlow;
@@ -147,6 +153,34 @@ public class TestLesson3 {
 		sessionStatefull.insert(cash3);
 
 		sessionStatefull.fireAllRules();
+
+	}
+
+	@Test
+	public void testEvalWithBigDecimal() throws Exception {
+		String str = "package droolscours";
+		str += "import java.math.BigDecimal; \n";
+		str += "import java.util.List; \n";
+		str += "global List list; \n";
+		str += "rule \"rule1\" \n";
+		str += "dialect \"java\" \n";
+		str += "when \n";
+		str += "$bd : BigDecimal( )\n";
+		str += "eval ( $bd.compareTo( BigDecimal.ZERO ) > 0 ) \n";
+		str += "then \n";
+		str += "list.add( $bd ); \n";
+		str += "end \n";
+
+		KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
+		kbuilder.add(ResourceFactory.newByteArrayResource(str.getBytes()), ResourceType.DRL);
+
+		if (kbuilder.hasErrors()) {
+			System.out.println(kbuilder.getErrors().toString());
+		}
+
+		// assertFalse(kbuilder.getErrors());
+		KnowledgeBase kbase = KnowledgeBaseFactory.newKnowledgeBase();
+		kbase.addKnowledgePackages(kbuilder.getKnowledgePackages());
 
 	}
 }
